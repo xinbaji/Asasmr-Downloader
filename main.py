@@ -60,7 +60,7 @@ class GetAsasmrAudio():
         
     def tsToMp4(self):
         print("正在合并...")
-        with open ("./"+self.title+"/"+self.title+".mp4","wb") as f1:
+        with open ("./"+self.title+"/"+self.title+".mp3","wb") as f1:
             for i in range(0,int(self.tsNum)+1,1):
                 with open ("./"+self.title+"/"+str(i)+".ts" ,"rb") as f2:
                     f1.write(f2.read())
