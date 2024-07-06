@@ -32,9 +32,16 @@ class GetAsasmrAudio():
                 self.m3u8Url='https:'+self.m3u8Url.replace("\\","")
                 break
             elif 'video' in self.targetUrl:
-                self.asmrType='video'
+                
                 print("识别为视频类型")
                 m3u8Script=html.xpath('//*[@id="dooplay_player_response"]/script/text()')[0]
+                if 'http' in m3u8Script:
+                    self.asmrType = 'video'
+                else:
+                    print("登录后查看，现修改为音频下载")
+                    m3u8Script=html.xpath('//*[@id="info"]/div[1]/script/text()')
+                    self.asmrType = 'sound'
+
                 self.title=html.xpath('//*[@id="single"]/div[2]/div[1]/div[2]/h1/text()')[0]
                 ex="url: '(.*?)',"
                 self.m3u8Url=re.findall(ex,str(m3u8Script),re.S)[0]
