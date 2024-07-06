@@ -7,7 +7,7 @@ import os
 
 class GetAsasmrAudio():
     def __init__(self):
-        self.targetUrl=u"https://www.asasmr4.com/sound/24542.html"
+        self.targetUrl=u""
         self.m3u8Url=''
         self.m3u8UrlHost=""
         self.tsNum=''
