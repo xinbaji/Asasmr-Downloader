@@ -4,6 +4,7 @@ from lxml import etree
 from threading import Thread
 import time
 import os
+
 class GetAsasmrAudio():
     def __init__(self):
         self.targetUrl=u"https://www.asasmr4.com/sound/24542.html"
@@ -59,7 +60,7 @@ class GetAsasmrAudio():
         
     def tsToMp4(self):
         print("正在合并...")
-        with open ("./"+self.title+"/"+self.title+".mp3","wb") as f1:
+        with open ("./"+self.title+"/"+self.title+".mp4","wb") as f1:
             for i in range(0,int(self.tsNum)+1,1):
                 with open ("./"+self.title+"/"+str(i)+".ts" ,"rb") as f2:
                     f1.write(f2.read())
@@ -70,5 +71,6 @@ class GetAsasmrAudio():
         return self
     
 gaa=GetAsasmrAudio()
+gaa.targetUrl=input("输入asasmr的地址：")
 gaa.getM3u8().getAudioContent().tsToMp4()
 print("成功下载："+gaa.title)
